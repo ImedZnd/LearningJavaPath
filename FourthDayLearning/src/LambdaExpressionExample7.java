@@ -10,5 +10,6 @@ public class LambdaExpressionExample7{
 
         list.forEach((n)->System.out.println(n)); // lambda
         list.forEach(System.out::println);  // methode reference
+
     }
 }  

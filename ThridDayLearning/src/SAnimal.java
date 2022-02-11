@@ -1,20 +1,24 @@
 public interface SAnimal {
-    static public String identifyMyself() {
+    default String identifyMyself() {
         return "I am an animal.";
     }
 }
 
 interface EggLayer extends SAnimal {
-    static public String identifyMyself() {
+    default String identifyMyself() {
         return "I am able to lay eggs.";
     }
 }
 
-interface FireBreather extends SAnimal { }
+interface FireBreather extends SAnimal {
+//    default String identifyMyself() {
+//        return "I am able to Fire Breather.";
+//    }
+}
 
-class Dragon implements EggLayer, FireBreather {
+class Dragon implements FireBreather ,EggLayer {
     public static void main (String... args) {
-        SAnimal myApp = new Dragon();
-        System.out.println(EggLayer.identifyMyself());
+        FireBreather myApp = new Dragon();
+        System.out.println(myApp.identifyMyself());
     }
 }

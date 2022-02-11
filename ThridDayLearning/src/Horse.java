@@ -21,4 +21,9 @@ class Pegasus extends Horse implements Flyer, Mythical {
         Pegasus myApp = new Pegasus();
         System.out.println(myApp.identifyMyself());
     }
+
+    @Override
+    public String identifyMyself() {
+        return Flyer.super.identifyMyself();
+    }
 }
