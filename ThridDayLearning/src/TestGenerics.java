@@ -1,5 +1,6 @@
 import java.util.List;
 import java.util.function.Function;
+import java.util.stream.Stream;
 
 public class TestGenerics {
 
@@ -55,7 +56,7 @@ public class TestGenerics {
     public static void main(String[] args) {
         final var t1 =
                 new Tuple<>("imed", 25)
-                        .mapElement1(e -> e.length())
+                        .mapElement1(String::length)//e -> e.length()
                         .mapElement1(e -> e * 10)
                         //.mapElement1(e -> e.toString().concat(" this is a string"))
                         .mapElement2(e -> e * 10);
@@ -69,16 +70,14 @@ public class TestGenerics {
 
 
         final var l1 =
-                List
-                        .of(
-                                "true",
-                                "1",
-                                "2",
-                                "3"
-                        )
-                        .stream()
-                        .map(e->e.length())
-                        .map(e->e.toString())
+                Stream.of(
+                        "true",
+                        "1",
+                        "2",
+                        "3"
+                )
+                        .map(String::length)//e->e.length()
+                        .map(Object::toString)//e->e.toString()
                         .toList();
         System.out.println("l1 = " + l1);
     }
